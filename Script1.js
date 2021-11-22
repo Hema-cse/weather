@@ -85,10 +85,7 @@ async function compareTemp()
     var t2 = gettimezone(citi2value[2]);
     document.getElementById("city1Time").innerHTML = t1;
     document.getElementById("city2Time").innerHTML = t2;
-    /* (t1 < t2) {
-        document.getElementsByClassName("temp_values1").innerHTML = "<span style='background-color: red;border-radius:50px;height:200px;width:200px'>**Message</span>";
-    }*/
-
+   
     // getting the temperature of city 1
     const response = await fetch("https://www.7timer.info/bin/astro.php?lon=" + citi1value[1] + "&lat=" + citi1value[0] + "&ac=0&unit=metric&output=json&tzshift=0");
     const latlong_data = await response.json();
@@ -99,16 +96,36 @@ async function compareTemp()
     // retrieving the current temperature from the json file from the array of temperatures
     let x = Math.floor(hour / 3);
     city1Temp = latlong_data.dataseries[x].temp2m;
-    alert(city1Temp);
     document.getElementById("city1Temp").innerHTML = city1Temp;
     
     // getting the temperature of city 2
     const response1 = await fetch("https://www.7timer.info/bin/astro.php?lon=" + citi2value[1] + "&lat=" + citi2value[0] + "&ac=0&unit=metric&output=json&tzshift=0");
     const latlong_data1 = await response1.json();;
     city2Temp = latlong_data1.dataseries[x].temp2m;
-    alert(city2Temp);
-    document.getElementById("city2Temp").innerHTML = city2Temp; 
+    document.getElementById("city2Temp").innerHTML = city2Temp;
+
+    if (city1Temp > city2Temp) {
+        document.getElementById("city1Temp").innerHTML = "<span style='background-color: red;color: white;border-radius:50px;height:300px;width:400px'></span>";
+    }
+    else if (city1Temp < city2Temp)
+    {
+        document.getElementById("city1Temp").innerHTML = "<span style='background-color: green;color:white; border-radius:50px; height:300px;width:400px'></span>";
+    }
+
    
+}
+function convertTemp() {
+    if (document.getElementById("f").checked)
+    {
+       
+        var t = (Math.round(num * 9 / 5) + 32);
+        document.getElementById("city2Temp").innerHTML = t;
+    }
+    else if (document.getElementById("c").checked)
+    {
+       
+        document.getElementById("f").innerHTML = t;
+    }
 }
 
 

@@ -19,10 +19,8 @@ body {
     background-color: aliceblue;
     padding-top: 60px;
 }
-.button {
-    position: relative;
-    top: 60px;
-    left: 1000px;
+.section2.button {
+    position: relative;   
     border-radius: 39px;
     background-color: darkslateblue;
     color: white;

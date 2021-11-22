@@ -14,19 +14,35 @@
         </center>
     </div>
     <div class="section2">
-        <select id="cities1">
-        </select>
-        <select id="cities2">
-        </select>
-        <div id="city1Time"></div>
-        <div id="city2Time"></div>
-
-        <div id="city1Temp"></div>
-        <div id="city2Temp"></div>
-        <button onclick="compareTemp();">COMPARE</button>
+        <table cellpadding="20px" cellspacing="40px">
+            <tr>
+                <td><select id="cities1"></select></td>
+                <td><select id="cities2"></select></td>
+                <td><button onclick="compareTemp();">COMPARE</button></td>
+            </tr>
+               <tr>
+                   <td><div id="city1Time"></div></td>
+                   <td><div id="city2Time"></div></td>
+               </tr>
+               <tr>
+                   <td><div id="city1Temp"></div></td>
+                   <td> <div id="city2Temp"></div></td>
+               </tr>
+            
+        </table>
     </div>
+    <form id="units">
+        
+        
+            <input type="radio" id="c" value="c" name="temperature"checked />
+            <label for="c">Celsius </label><br>
+            <input type="radio" id="f" value="f" name="temperature" />
+            <label for="f">Fahrenheit </label>
+      
+        
+    </form>
 
-    <script src="Script1.js"></script>
+            <script src="Script1.js"></script>
 
 </body>
 </html>
