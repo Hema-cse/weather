@@ -1,10 +1,9 @@
 ﻿
 <!DOCTYPE html>
-
 <html>
 <head>
-    <title>Weather Compare</title>
-    <link rel="stylesheet" href="StyleSheet1.css">
+    <title>Weather-Compare</title>
+    <link rel="stylesheet" href="StyleSheet1.css" />
 </head>
 <body>
     <div class="container">
@@ -15,14 +14,19 @@
         </center>
     </div>
     <div class="section2">
-    <select class="dropdown">
+        <select id="cities1">
+        </select>
+        <select id="cities2">
+        </select>
+        <div id="city1Time"></div>
+        <div id="city2Time"></div>
 
-    </select>   
-        
+        <div id="city1Temp"></div>
+        <div id="city2Temp"></div>
+        <button onclick="compareTemp();">COMPARE</button>
     </div>
-    <button class="button">COMPARE</button>
-        <script src="Script1.js">
 
-        </script>
+    <script src="Script1.js"></script>
+
 </body>
 </html>
