@@ -81,7 +81,10 @@ async function compareTemp()
 
      // retreiving the timezones of 2 cities
 
-   
+    var t1 = gettimezone(citi1value[2]);
+    var t2 = gettimezone(citi2value[2]);
+    document.getElementById("city1Time").innerHTML = t1;
+    document.getElementById("city2Time").innerHTML = t2;
     /* (t1 < t2) {
         document.getElementsByClassName("temp_values1").innerHTML = "<span style='background-color: red;border-radius:50px;height:200px;width:200px'>**Message</span>";
     }*/
@@ -108,5 +111,24 @@ async function compareTemp()
    
 }
 
+
+//  prints the time zones of 2 cities
+function gettimezone(city) {
+    for (var i = 0; i < countries.length; i++) {
+
+        var states = countries[i]['states'];
+        for (var j = 0; j < states.length; j++) {
+
+            var cities = states[j]['cities'];
+            for (var k = 0; k < cities.length; k++) {
+                if (cities[k].name == city) {
+                    return countries[i].timezones[0].gmtOffsetName;
+                    document.getElementById("city1Time").innerHTML = countries[i].timezones[0].gmtOffsetName;;
+                }
+
+            }
+        }
+    }
+}
 
   
