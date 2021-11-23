@@ -6,25 +6,37 @@
     <link rel="stylesheet" href="StyleSheet1.css" />
 </head>
 <body>
+    
     <div class="container">
+        <section id="loading">
+            <img src="C:\Users\hemad\Documents\GitHub\weather\load_icon.gif">
+        </section>
+
         <center>
             <h1>
                 <span>Weather Compare</span>
             </h1>
         </center>
     </div>
+
     <div class="section2">
         <table>
             <tr>
 
-                <td><select id="cities1" class="cities">
-                    <option>
-                        Choose a city
-                    </option></select></td>
-                <td><select id="cities2" class="cities">
+                <td>
+                    <select id="cities1" class="cities">
                         <option>
                             Choose a city
-                        </option></select></td>
+                        </option>
+                    </select>
+                </td>
+                <td>
+                    <select id="cities2" class="cities">
+                        <option>
+                            Choose a city
+                        </option>
+                    </select>
+                </td>
                 <td><button onclick="compareTemp();">COMPARE</button></td>
 
             </tr>
@@ -35,8 +47,8 @@
             </tr>
 
             <tr>
-                <td><p id="city1Temp" class="color"></p></td>
-                <td><p id="city2Temp" class="color"></p></td>
+                <td><div id="city1Temp" class="color"></div></td>
+                <td><div id="city2Temp" class="color"></div></td>
             </tr>
         </table>
         <div class="radios">
@@ -48,9 +60,9 @@
             </form>
 
         </div>
-        
+
     </div>
-    
+
 
     <script src="Script1.js"></script>
 

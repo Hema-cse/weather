@@ -1,11 +1,14 @@
 var countries = [];
 getCitiesData();
 var tmp1, tmp2;
+
 // retrieving the countries json file
 async function fetch_countriesData()
 {
+    document.getElementById("loading").style.display = "block";
     const countries_res = await fetch("https://raw.githubusercontent.com/dr5hn/countries-states-cities-database/master/countries%2Bstates%2Bcities.json");
     const countries_data = await countries_res.json();
+    document.getElementById("loading").style.display = "none";
     countries = countries_data;
 }
 
@@ -96,16 +99,14 @@ async function compareTemp()
     // retrieving the current temperature from the json file from the array of temperatures
     let x = Math.floor(hour / 3);
     city1Temp = latlong_data.dataseries[x].temp2m;
-    tmp1 = city1Temp;
-    document.getElementById("city1Temp").innerHTML = tmp1;
+    document.getElementById("city1Temp").innerHTML = city1Temp;
     
     // getting the temperature of city 2
     const response1 = await fetch("https://www.7timer.info/bin/astro.php?lon=" + citi2value[1] + "&lat=" + citi2value[0] + "&ac=0&unit=metric&output=json&tzshift=0");
     const latlong_data1 = await response1.json();
 
-    city2Temp = latlong_data1.dataseries[x].temp2m;
-    tmp2 = city2Temp;
-    document.getElementById("city2Temp").innerHTML = tmp2;
+     city2Temp = latlong_data1.dataseries[x].temp2m;
+     document.getElementById("city2Temp").innerHTML = city2Temp;;
 
     if (city1Temp > city2Temp)
     {
@@ -118,16 +119,14 @@ async function compareTemp()
         document.getElementById("city2Temp").style.backgroundColor = 'red';
     }
 
-    //printTime();
 }
 
 // converting the temperature from celsius to fahrenheit
 
-
 function convertTemp()
 {
     
-   let tmp1 = city1Temp;
+    let tmp1 = city1Temp;
     let tmp2 = city2Temp;
     const city1ele = document.getElementById("city1Temp");
     const city2ele = document.getElementById("city2Temp");
@@ -136,18 +135,16 @@ function convertTemp()
 
         tmp1 = (Math.round(city1Temp * 9 / 5) + 32);
         tmp2 = (Math.round(city2Temp * 9 / 5) + 32);
-        city1ele.innerHTML = tmp1 ;
-        
+        city1ele.innerHTML = tmp1 ;       
         city2ele.innerHTML = tmp2;
          
     }
      if (document.getElementById("c").checked)
-    {
+     {
         city1ele.innerHTML = city1Temp;
         city2ele.innerHTML = city2Temp;
-    }
+     }
 }
-
 
 
 //  prints the time zones of 2 cities
@@ -169,10 +166,3 @@ function gettimezone(city) {
     }
 }
 
-
-
-/*function printTime()
-{
-    
-
-}*/
