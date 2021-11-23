@@ -108,15 +108,15 @@ async function compareTemp()
 
     if (city1Temp > city2Temp) {
         document.getElementById("city1Temp").style.backgroundColor = 'red';
-      
+
         document.getElementById("city2Temp").style.backgroundColor = 'green';;
     }
-    else if (city1Temp < city2Temp)
-    {
+    else if (city1Temp < city2Temp) {
         document.getElementById("city1Temp").style.backgroundColor = 'green';
         document.getElementById("city2Temp").style.backgroundColor = 'red';
 
     }
+    
 
    
 }
