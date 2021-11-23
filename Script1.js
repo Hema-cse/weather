@@ -22,7 +22,8 @@ async function getCitiesData()
     var c = 0;
     for (var i = 0; i < countries.length; i++)
     {
-        if (citiCount > 10)
+        
+        if (citiCount > 50)
         {
             break;
         }
@@ -30,18 +31,19 @@ async function getCitiesData()
         var states = countries[i]['states'];
         for (var j = 0; j < states.length; j++)
         {
-           
-            if (citiCount > 10) {
+            
+            if (citiCount > 50)
+            {
                 break;
             }
             var cities = states[j]['cities'];
             for (var k = 0; k < cities.length; k++)
             {
-                if (++c>1)
+                if (++c>2)
                 {
                     break;
                 }
-                if (++citiCount > 10)
+                if (++citiCount > 50)
                 {
                     break;
                 }
@@ -105,28 +107,32 @@ async function compareTemp()
     document.getElementById("city2Temp").innerHTML = city2Temp;
 
     if (city1Temp > city2Temp) {
-        document.getElementById("city1Temp").innerHTML = "<span style='background-color: red;color: white;border-radius:50px;height:300px;width:400px'></span>";
+        document.getElementById("city1Temp").style.backgroundColor = 'red';
+      
+        document.getElementById("city2Temp").style.backgroundColor = 'green';;
     }
     else if (city1Temp < city2Temp)
     {
-        document.getElementById("city1Temp").innerHTML = "<span style='background-color: green;color:white; border-radius:50px; height:300px;width:400px'></span>";
+        document.getElementById("city1Temp").style.backgroundColor = 'green';
+        document.getElementById("city2Temp").style.backgroundColor = 'red';
+
     }
 
    
 }
-function convertTemp() {
+/*function convertTemp() {
     if (document.getElementById("f").checked)
     {
-       
-        var t = (Math.round(num * 9 / 5) + 32);
+
+        var t = (Math.round(city1Temp * 9 / 5) + 32);
         document.getElementById("city2Temp").innerHTML = t;
     }
     else if (document.getElementById("c").checked)
     {
-       
-        document.getElementById("f").innerHTML = t;
+        document.getElementById("city1Temp").innerHTML = city1Temp;
+        document.getElementById("city2Temp").innerHTML = city2Temp;
     }
-}
+}*/
 
 
 //  prints the time zones of 2 cities

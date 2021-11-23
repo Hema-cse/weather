@@ -2,15 +2,19 @@
     padding:0px;
     margin:auto;
 }
-
-span {
+.container span {
+    position: relative;
+    width: 300px;
+    padding:20px 80px;
+    
+}
+h1 span {
     color: white;
     background-color: brown;
     padding: 20px;
-
-    border-radius: 5px;
-    align-items:center;
-    justify-content:center;
+   // border-radius: 5px;
+   // align-items:center;
+   //justify-content:center;
 }
 h1{
     padding:20px;
@@ -19,7 +23,11 @@ body {
     background-color: aliceblue;
     padding-top: 60px;
 }
-.section2.button {
+.section2 .cities{
+        
+
+}
+.section2 table.button {
     position: relative;   
     border-radius: 39px;
     background-color: darkslateblue;

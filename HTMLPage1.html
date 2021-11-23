@@ -16,33 +16,35 @@
     <div class="section2">
         <table cellpadding="20px" cellspacing="40px">
             <tr>
-                <td><select id="cities1"></select></td>
-                <td><select id="cities2"></select></td>
-                <td><button onclick="compareTemp();">COMPARE</button></td>
+                
+                    <td><select id="cities1" class="cities"></select></td>
+                    <td><select id="cities2" class="cities"></select></td>
+                    <td><button onclick="compareTemp();">COMPARE</button></td>
+                
             </tr>
-               <tr>
-                   <td><div id="city1Time"></div></td>
-                   <td><div id="city2Time"></div></td>
-               </tr>
-               <tr>
-                   <td><div id="city1Temp"></div></td>
-                   <td> <div id="city2Temp"></div></td>
-               </tr>
-            
+             <tr>
+                    <td><div id="city1Time"></div></td>
+                    <td><div id="city2Time"></div></td>
+            </tr>
+            <tr>
+                    <td><div id="city1Temp"></div></td>
+                    <td> <div id="city2Temp"></div></td>
+            </tr>
+
         </table>
     </div>
     <form id="units">
-        
-        
-            <input type="radio" id="c" value="c" name="temperature"checked />
-            <label for="c">Celsius </label><br>
-            <input type="radio" id="f" value="f" name="temperature" />
-            <label for="f">Fahrenheit </label>
-      
-        
+
+
+        <input type="radio" id="c" value="c" name="temperature" checked />
+        <label for="c">Celsius </label><br>
+        <input type="radio" id="f" value="f" name="temperature" />
+        <label for="f">Fahrenheit </label>
+
+
     </form>
 
-            <script src="Script1.js"></script>
+    <script src="Script1.js"></script>
 
 </body>
 </html>
