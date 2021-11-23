@@ -17,34 +17,40 @@
         <table>
             <tr>
 
-                <td><select id="cities1" class="cities"></select></td>
-                <td><select id="cities2" class="cities"></select></td>
+                <td><select id="cities1" class="cities">
+                    <option>
+                        Choose a city
+                    </option></select></td>
+                <td><select id="cities2" class="cities">
+                        <option>
+                            Choose a city
+                        </option></select></td>
                 <td><button onclick="compareTemp();">COMPARE</button></td>
 
             </tr>
 
             <tr>
-                <td><div id="city1Time"></div></td>
-                <td><div id="city2Time"></div></td>
+                <td><div id="city1Time" class="timezone"></div></td>
+                <td><div id="city2Time" class="timezone"></div></td>
             </tr>
 
             <tr>
-                <td><div id="city1Temp" class="color"></div></td>
-                <td><div id="city2Temp" class="color"></div></td>
+                <td><p id="city1Temp" class="color"></p></td>
+                <td><p id="city2Temp" class="color"></p></td>
             </tr>
+        </table>
+        <div class="radios">
+            <form id="calc">
+                <input type="radio" id="c" value="c" name="temperature" onclick="convertTemp();" checked />
+                <label for="c"> Celsius </label>
+                <input type="radio" id="f" value="f" name="temperature" onclick="convertTemp();" />
+                <label for="f"> Fahrenheit </label>
+            </form>
 
-    </table>
+        </div>
+        
     </div>
-    <form id="units">
-
-
-        <input type="radio" id="c" value="c" name="temperature" checked />
-        <label for="c">Celsius </label><br>
-        <input type="radio" id="f" value="f" name="temperature" />
-        <label for="f">Fahrenheit </label>
-
-
-    </form>
+    
 
     <script src="Script1.js"></script>
 
