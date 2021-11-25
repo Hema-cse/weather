@@ -1,27 +1,29 @@
 var countries = [];
-getCitiesData();
+document.getElementById("c").disabled = true; // disabling the radio buttons until the temperatures are retrieved
+document.getElementById("f").disabled = true;
+
+getCitiesData(); // retreives few cities from the states
 
 
-// retrieving the countries json file
-async function fetch_countriesData()
+async function fetch_countriesData()             // retrieving the countries json file
 {
     document.getElementById("loading").style.display = "block"; // displays loading icon before fetching the data
     const countries_res = await fetch("https://raw.githubusercontent.com/dr5hn/countries-states-cities-database/master/countries%2Bstates%2Bcities.json");
     const countries_data = await countries_res.json();
     document.getElementById("loading").style.display = "none"; // loading icon is not displayed once data is loaded
     countries = countries_data;
+    console.log(countries);
 }
 
-// retreiving few cities in each drop down
-async function getCitiesData()
+
+async function getCitiesData()                      // retreiving few cities in each drop down
 {
     document.getElementById("loading").style.display = "block";
 
-    //calling the countries json file
-    await fetch_countriesData();
+    await fetch_countriesData();                      //calling the countries json file
     document.getElementById("loading").style.display = "none";
-    var cities1 = document.getElementById("cities1");
-    var cities2 = document.getElementById("cities2");
+    var cities1 = document.getElementById("cities1");      // drop down list 1
+    var cities2 = document.getElementById("cities2");       // drop down list 2
 
     var citiCount = 0;
     var c = 0;
@@ -34,36 +36,36 @@ async function getCitiesData()
         }
         c=0;
         var states = countries[i]['states'];
-        for (var j = 0; j < states.length; j++)
-        {           
+            for (var j = 0; j < states.length; j++)
+            {           
                 if (citiCount > 50)
                 {
                      break;
                 }
                 var cities = states[j]['cities'];
-            for (var k = 0; k < cities.length; k++)
-                {
-                  if (++c>2)
+                    for (var k = 0; k < cities.length; k++)
                     {
-                         break;
-                    }
-                  if (++citiCount > 50)
-                    {
-                         break;
-                    }
-                    // adding the options to 1 drop down
-                    var option1 = document.createElement("OPTION");
-                    option1.value = cities[k].latitude + "," + cities[k].longitude + "," + cities[k].name;
-                    option1.innerHTML = cities[k].name;
-                    cities1.options.add(option1);
+                        if (++c>2)
+                        {
+                            break;
+                        }
+                        if (++citiCount > 50)
+                        {
+                            break;
+                        }
+                        // adding the options to 1 drop down
+                        var option1 = document.createElement("OPTION");
+                        option1.value = cities[k].latitude + "," + cities[k].longitude + "," + cities[k].name;
+                        option1.innerHTML = cities[k].name;
+                        cities1.options.add(option1);
 
-                    // adding the options to 2 drop down
-                    var option2 = document.createElement("OPTION");
-                    option2.value = cities[k].latitude + "," + cities[k].longitude + "," + cities[k].name;
-                    option2.innerHTML = cities[k].name;
-                    cities2.options.add(option2);
+                        // adding the options to 2 drop down
+                        var option2 = document.createElement("OPTION");
+                        option2.value = cities[k].latitude + "," + cities[k].longitude + "," + cities[k].name;
+                        option2.innerHTML = cities[k].name;
+                        cities2.options.add(option2);
+                    }
             }
-        }
     }
 }
 // loading the product astro json file
@@ -99,7 +101,7 @@ async function compareTemp()
     }
 
     // retreiving the timezones of 2 cities
-    document.getElementById("city1Time").innerHTML = gettimezone(citi1value[2]);
+    document.getElementById("city1Time").innerHTML = gettimezone(citi1value[2]); // city name is present at 2 index
     document.getElementById("city2Time").innerHTML = gettimezone(citi2value[2]);
   
     document.getElementById("loading").style.display = "block";
@@ -126,7 +128,11 @@ async function compareTemp()
     document.getElementById("loading").style.display = "none";
 
      city2Temp = latlong_data1.dataseries[x].temp2m;
-     document.getElementById("city2Temp").innerHTML = city2Temp;;
+    document.getElementById("city2Temp").innerHTML = city2Temp;
+
+    document.getElementById("c").disabled = false; // enabling the radio buttons
+    document.getElementById("f").disabled = false;
+
 
     // assigning the colors based on temperature
     if (city1Temp > city2Temp)
@@ -146,7 +152,7 @@ async function compareTemp()
 
 function convertTemp()
 {
-   
+    
     let tmp1 = city1Temp;
     let tmp2 = city2Temp;
     const city1ele = document.getElementById("city1Temp");
@@ -165,10 +171,7 @@ function convertTemp()
         city1ele.innerHTML = city1Temp;
         city2ele.innerHTML = city2Temp;
      }
-    if (city1value == "none" || city2value == "none")
-    {
-        alert("asdsdas");
-    }
+    
 }
 
 
