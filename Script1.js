@@ -1,22 +1,25 @@
 var countries = [];
 getCitiesData();
-var tmp1, tmp2;
+
 
 // retrieving the countries json file
 async function fetch_countriesData()
 {
-    document.getElementById("loading").style.display = "block";
+    document.getElementById("loading").style.display = "block"; // displays loading icon before fetching the data
     const countries_res = await fetch("https://raw.githubusercontent.com/dr5hn/countries-states-cities-database/master/countries%2Bstates%2Bcities.json");
     const countries_data = await countries_res.json();
-    document.getElementById("loading").style.display = "none";
+    document.getElementById("loading").style.display = "none"; // loading icon is not displayed once data is loaded
     countries = countries_data;
 }
 
 // retreiving few cities in each drop down
 async function getCitiesData()
 {
+    document.getElementById("loading").style.display = "block";
+
     //calling the countries json file
     await fetch_countriesData();
+    document.getElementById("loading").style.display = "none";
     var cities1 = document.getElementById("cities1");
     var cities2 = document.getElementById("cities2");
 
@@ -66,15 +69,19 @@ async function getCitiesData()
 // loading the product astro json file
 async function fetch_time()
 {
+    document.getElementById("loading").style.display = "block";
     const response = await fetch("https://www.7timer.info/bin/astro.php?lon=" + citi1value[1] + "&lat=" + citi1value[0] + "&ac=0&unit=metric&output=json&tzshift=0");
     const latlong_data = await response.json();
+    document.getElementById("loading").style.display = "block";
 }
 
-/* returns the temperature of 2 cities
+/* this function compares the temperature of 2 cities
+  and  the also assigns the timezones for 2 cities
  */
 
 async function compareTemp()
 {
+    document.getElementById("loading").style.display = "block";
     var citi1value = document.getElementById("cities1");
     citi1value = citi1value.options[citi1value.selectedIndex].value;
     
@@ -82,15 +89,25 @@ async function compareTemp()
     var citi2value = document.getElementById("cities2");
     citi2value = citi2value.options[citi2value.selectedIndex].value;
     citi2value = citi2value.split(",");
+    document.getElementById("loading").style.display = "none";
+
+    // checks if the cities are not selected
+    if (citi1value == "none" || citi2value == "none")
+    {
+        alert("select the city");
+        return;
+    }
 
     // retreiving the timezones of 2 cities
     document.getElementById("city1Time").innerHTML = gettimezone(citi1value[2]);
     document.getElementById("city2Time").innerHTML = gettimezone(citi2value[2]);
-   
+  
+    document.getElementById("loading").style.display = "block";
 
     // getting the temperature of city 1
     const response = await fetch("https://www.7timer.info/bin/astro.php?lon=" + citi1value[1] + "&lat=" + citi1value[0] + "&ac=0&unit=metric&output=json&tzshift=0");
     const latlong_data = await response.json();
+    document.getElementById("loading").style.display = "none";
 
     // getting the current date
     const d = new Date();
@@ -100,14 +117,18 @@ async function compareTemp()
     let x = Math.floor(hour / 3);
     city1Temp = latlong_data.dataseries[x].temp2m;
     document.getElementById("city1Temp").innerHTML = city1Temp;
-    
+
+    document.getElementById("loading").style.display = "block";
+
     // getting the temperature of city 2
     const response1 = await fetch("https://www.7timer.info/bin/astro.php?lon=" + citi2value[1] + "&lat=" + citi2value[0] + "&ac=0&unit=metric&output=json&tzshift=0");
     const latlong_data1 = await response1.json();
+    document.getElementById("loading").style.display = "none";
 
      city2Temp = latlong_data1.dataseries[x].temp2m;
      document.getElementById("city2Temp").innerHTML = city2Temp;;
 
+    // assigning the colors based on temperature
     if (city1Temp > city2Temp)
     {
         document.getElementById("city1Temp").style.backgroundColor = 'red';
@@ -125,7 +146,7 @@ async function compareTemp()
 
 function convertTemp()
 {
-    
+   
     let tmp1 = city1Temp;
     let tmp2 = city2Temp;
     const city1ele = document.getElementById("city1Temp");
@@ -144,6 +165,10 @@ function convertTemp()
         city1ele.innerHTML = city1Temp;
         city2ele.innerHTML = city2Temp;
      }
+    if (city1value == "none" || city2value == "none")
+    {
+        alert("asdsdas");
+    }
 }
 
 

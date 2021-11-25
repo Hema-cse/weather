@@ -25,19 +25,19 @@
 
                 <td>
                     <select id="cities1" class="cities">
-                        <option>
+                        <option value="none">
                             Choose a city
                         </option>
                     </select>
                 </td>
                 <td>
                     <select id="cities2" class="cities">
-                        <option>
+                        <option value="none">
                             Choose a city
                         </option>
                     </select>
                 </td>
-                <td><button onclick="compareTemp();">COMPARE</button></td>
+                <td><button id="btn" onclick="compareTemp();">COMPARE</button></td>
 
             </tr>
 
@@ -52,9 +52,9 @@
             </tr>
         </table>
         <div class="radios">
-            <form id="calc">
+            <form>
                 <input type="radio" id="c" value="c" name="temperature" onclick="convertTemp();" checked />
-                <label for="c"> Celsius </label>
+                <label for="c"> Celsius </label><br>
                 <input type="radio" id="f" value="f" name="temperature" onclick="convertTemp();" />
                 <label for="f"> Fahrenheit </label>
             </form>
