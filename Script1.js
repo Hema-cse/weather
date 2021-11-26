@@ -16,7 +16,7 @@ async function fetch_countriesData()             // retrieving the countries jso
 }
 
 
-async function getCitiesData()                      // retreiving few cities in each drop down
+async function getCitiesData()                      // 
 {
     document.getElementById("loading").style.display = "block";
 
@@ -25,18 +25,19 @@ async function getCitiesData()                      // retreiving few cities in 
     var cities1 = document.getElementById("cities1");      // drop down list 1
     var cities2 = document.getElementById("cities2");       // drop down list 2
 
-    var citiCount = 0;
-    var c = 0;
+    var citiCount = 0; // holds the number of options in drop down
+    var c = 0; 
     for (var i = 0; i < countries.length; i++)
     {
         
-        if (citiCount > 50)
+        if (citiCount > 50)  // breaks when city count is greater than 50
         {
             break;
         }
         c=0;
         var states = countries[i]['states'];
-            for (var j = 0; j < states.length; j++)
+        console.log('s',states);
+            for (var j = 0; j < states.length; j++)       
             {           
                 if (citiCount > 50)
                 {
@@ -45,7 +46,7 @@ async function getCitiesData()                      // retreiving few cities in 
                 var cities = states[j]['cities'];
                     for (var k = 0; k < cities.length; k++)
                     {
-                        if (++c>2)
+                        if (++c > 2)                  // breaks when  retreiving the 2 cities from each country
                         {
                             break;
                         }
@@ -74,22 +75,21 @@ async function fetch_time()
     document.getElementById("loading").style.display = "block";
     const response = await fetch("https://www.7timer.info/bin/astro.php?lon=" + citi1value[1] + "&lat=" + citi1value[0] + "&ac=0&unit=metric&output=json&tzshift=0");
     const latlong_data = await response.json();
-    document.getElementById("loading").style.display = "block";
+    document.getElementById("loading").style.display = "none";
 }
 
-/* this function compares the temperature of 2 cities
+/* This function compares the temperature of 2 cities
   and  the also assigns the timezones for 2 cities
  */
 
 async function compareTemp()
 {
-    document.getElementById("loading").style.display = "block";
+    document.getElementById("loading").style.display = "block"; // initially loading is displayed
     var citi1value = document.getElementById("cities1");
-    citi1value = citi1value.options[citi1value.selectedIndex].value;
-    
+    citi1value = citi1value.options[citi1value.selectedIndex].value; // holds the latitude , longitude and city1 name
     citi1value = citi1value.split(",");
     var citi2value = document.getElementById("cities2");
-    citi2value = citi2value.options[citi2value.selectedIndex].value;
+    citi2value = citi2value.options[citi2value.selectedIndex].value; // holds the latitude , longitude and city2 name
     citi2value = citi2value.split(",");
     document.getElementById("loading").style.display = "none";
 
@@ -166,7 +166,7 @@ function convertTemp()
         city2ele.innerHTML = tmp2;
          
     }
-     if (document.getElementById("c").checked)
+     if (document.getElementById("c").checked)      // displays the same temperature when the celcius is checked
      {
         city1ele.innerHTML = city1Temp;
         city2ele.innerHTML = city2Temp;
@@ -176,7 +176,8 @@ function convertTemp()
 
 
 //  prints the time zones of 2 cities
-function gettimezone(city) {
+function gettimezone(city)
+{
     for (var i = 0; i < countries.length; i++) {
 
         var states = countries[i]['states'];
